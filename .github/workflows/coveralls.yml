@@ -1,20 +1,3 @@
-name: CI/CD GitHub Actions
-on: [push]
-jobs:
-  gtest-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: git submodule init
-      - run: git submodule update
-      - run: pip install --user cpp-coveralls
-    
-
-      - name: Coveralls
-        run: coveralls --root . -E ".*external.*" -E ".*tests.*" -t ${{ secrets.coveralls_token }}
-
-
-
 - name: Coveralls GitHub Action
   uses: coverallsapp/github-action@1.1.3
   with:
