@@ -1,4 +1,24 @@
-- name: Coveralls GitHub Action
-  uses: coverallsapp/github-action@1.1.3
-  with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
+name: CI/CD GitHub Actions
+on: [push]
+jobs:
+  gtest-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git submodule init
+      - run: git submodule update
+      - run: pip install --user cpp-coveralls
+      - run: sudo apt update 
+      - run: sudo apt install -y qt5-qmake qt5-default
+      - run: cmake
+      - run: make
+      - run: ./tests
+
+      - name: Coveralls
+        run: coveralls --root . -E ".*external.*" -E ".*tests.*" -t ${{ secrets.coveralls_token }}
+
+
+
+
+
+
