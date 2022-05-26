@@ -54,3 +54,14 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
         run: |
           sonar-scanner --define sonar.host.url="${{ env.SONAR_SERVER_URL }}" --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
+      - name: Compile coverage reports
+        run: |
+          cd $GITHUB_WORKSPACE/build
+          mkdir gcov-reports
+          pushd gcov-reports
+          for f in `find ../tests/CMakeFiles/CDT_test.dir -name '*.o'`; do
+            echo "Processing $f file..."
+            gcov -o ${f} x
+          done
+          ls | wc -l
+          popd
