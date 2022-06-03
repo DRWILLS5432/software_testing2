@@ -28,12 +28,12 @@ void showrev(text txt);
 /**
  * Загружает содержимое указанного файла
  */
-void load(text txt, char *filename);
+void load(text txt, const char *filename);
 
 /**
  * Сохраняет содержимое указанного файла
  */
-void save(text txt, char *filename);
+void save(text txt, const char *filename);
 
 void rt(text txt);
 

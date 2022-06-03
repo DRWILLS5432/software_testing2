@@ -77,7 +77,7 @@ void process_backward(
  */
 void remove_all(text txt);
 
-void move_cursor_left(text txt);
+void move_cursor(text txt, direction dir);
 
 void remove_last_line(text txt);
 

@@ -18,15 +18,28 @@ void remove_last_line(text txt)
     
     /* Если список изначально пуст, делать ничего не надо */
     if (txt->length == 0) {
-        fprintf(stderr, "This line doesn't exist");
+        fprintf(stderr, "This line doesn't exist\n");
         return;
     }
 
     /* Текст ненулевой длины должен содержать хотя бы одну строку */
     assert(txt->begin != NULL && txt->end != NULL);
     node* save = txt->end;
-    txt->end = save->previous;
-    save->previous->next = NULL;
-    free(save);
+
+    if (save->previous != NULL) {
+        txt->end = save->previous;
+        txt->end->next = NULL;
+        if (txt->cursor->line == save) {
+            txt->cursor->line = txt->end;
+            txt->cursor->position = strlen(txt->end->contents);
+        }
+    } else {
+        txt->begin = NULL;
+        txt->end = NULL;
+        txt->cursor->line = NULL;
+        txt->cursor->position = -1;
+    }
+
     txt->length -= 1;
+    free(save);
 }
