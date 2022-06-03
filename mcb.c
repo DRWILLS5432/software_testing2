@@ -3,5 +3,5 @@
 #include "text/text.h"
 
 void mcb(text txt) {
-    move_cursor_left(txt);
+    move_cursor(txt, LEFT);
 }

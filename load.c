@@ -14,7 +14,7 @@
 /**
  * Загружает содержимое указанного файла
  */
-void load(text txt, char *filename)
+void load(text txt, const char *filename)
 {
     FILE *f;
 

@@ -12,10 +12,10 @@ static void saveline(int idx, char *contents, int cursor, void *data);
  * @param filename название файла
  */
 
-void save(text txt, char* filename) {
+void save(text txt, const char* filename) {
     FILE* f;
     if ((f = fopen(filename, "w")) == NULL) {
-        printf("The file %s cannot be opened\n", filename);
+        fprintf(stderr, "The file %s cannot be opened\n", filename);
         return;
     }
 
