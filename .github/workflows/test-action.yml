@@ -14,11 +14,7 @@ jobs:
       - run: make
       - run: chmod 0 no_access.txt
       - run: make test
-      - run: wget "https://github.com/linux-test-project/lcov/archive/master.zip"
-      - run: unzip "master.zip"
-      - run: cd "lcov-master"
-      - run: sudo make install
-      - run: cd ..
+      - run: sudo apt install lcov
       - run: lcov --capture --directory ./ --output-file coverage.info
       - name: Coveralls
         run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*" -E ".*CMakeFiles.*"
