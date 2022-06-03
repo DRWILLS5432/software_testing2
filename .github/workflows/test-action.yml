@@ -16,6 +16,7 @@ jobs:
       - run: make test
       - run: sudo apt install lcov
       - run: lcov --capture --directory ./ --output-file coverage.info
+      - run: lcov --extract coverage.info -o coverage.info '/home/runner/work/software_testing2/software_testing2/mcb.c' '/home/runner/work/software_testing2/software_testing2/rt.c' '/home/runner/work/software_testing2/software_testing2/save.c' '/home/runner/work/software_testing2/software_testing2/text/move_cursor.c' '/home/runner/work/software_testing2/software_testing2/process_backward.c' '/home/runner/work/software_testing2/software_testing2/remove_last_line.c'
       - name: Coveralls
         run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*" -E ".*CMakeFiles.*"
 
