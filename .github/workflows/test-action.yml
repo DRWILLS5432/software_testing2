@@ -12,6 +12,7 @@ jobs:
       - run: pip install --user cpp-coveralls
       - run: cmake .
       - run: make
+      - run: chmod 0 no_access.txt
       - run: make test
 
       - name: Coveralls
