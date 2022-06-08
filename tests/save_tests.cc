@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 extern "C" {
-    #include "../text/_text.h"
-    #include "../text/text.h"
-    #include "../common.h"
+    #include "../src/text/_text.h"
+    #include "../src/text/text.h"
+    #include "../src/common.h"
 }
 
 TEST(SaveTest, SavingText) {
