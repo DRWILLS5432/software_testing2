@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.3)
 
-project(Editor)
+project(editor)
 project(hello_test)
 
 add_definitions(-w)
@@ -36,7 +36,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 
-add_executable(Editor ${TextEditorSrc} editor.c)
+add_executable(editor ${TextEditorSrc} ${CMAKE_SOURCE_DIR}/src/editor.c)
 enable_testing()
 
 add_executable(
